@@ -325,14 +325,27 @@ async fn main() {
         .and(warp::path::param::<String>())
         .and(blockchain_filter.clone())
         .and_then(get_transaction);
+
+    let airdrop_tokens = warp::path("airdrop_tokens")
+        .and(warp::post())
+        .and(warp::body::json())
+        .and(blockchain_filter.clone())
+        .map(|airdrop_request: AirdropRequest, blockchain: Arc<Blockchain>| {
+            let AirdropRequest { address, amount } = airdrop_request;
+            match blockchain.update_balance(&address, amount as i64) {
+                Ok(_) => warp::reply::json(&format!("Airdropped {} MOHSIN tokens to address {}", amount, address)),
+                Err(e) => warp::reply::json(&e.to_string()),
+            }
+        });
     
     let routes = new_address
         .or(balance)
         .or(transaction)
         .or(transaction_details)
-        .or(transfer_tokens);
+        .or(transfer_tokens)
+        .or(airdrop_tokens);
     
-    println!("Starting server on port 3030");
+    println!("Starting MOHSIN CHAIN on port 3030");
     warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 }
 
@@ -340,6 +353,12 @@ async fn main() {
 struct TransferRequest {
     from: String,
     to: String,
+    amount: u64,
+}
+
+#[derive(Deserialize)]
+struct AirdropRequest {
+    address: String,
     amount: u64,
 }
 

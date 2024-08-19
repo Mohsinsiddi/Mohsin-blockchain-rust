@@ -1,4 +1,4 @@
-Here’s a GitHub README to guide users through setting up, running, and testing your Rust-based blockchain project. The README includes installation instructions, running commands, and `curl` requests for testing different features.
+Certainly! Here’s the updated README content incorporating the new `airdrop_tokens` feature and emphasizing the need to airdrop tokens to new addresses before testing the transfer functionality:
 
 ````markdown
 # Mohsin Blockchain
@@ -24,7 +24,9 @@ Before running the blockchain, ensure you have Rust and Cargo installed. You can
 ````
 
 2. **Verify Installation**:
+
    - Ensure Rust and Cargo are installed correctly by checking their versions:
+
      ```sh
      rustc --version
      cargo --version
@@ -58,7 +60,19 @@ You can use `curl` to interact with the blockchain. Below are the commands to te
 curl -X GET http://localhost:3030/new_address
 ```
 
-### 2. Check Balance of an Address
+### 2. Airdrop MOHSIN Tokens to the New Address
+
+**Note:** Before testing the transfer tokens feature, you must airdrop tokens to the newly created address to ensure it has a balance.
+
+Replace `ADDRESS` with the address you received from the previous step:
+
+```sh
+curl -X POST http://localhost:3030/airdrop_tokens \
+    -H "Content-Type: application/json" \
+    -d '{"address": "ADDRESS", "amount": 1000}'
+```
+
+### 3. Check Balance of an Address
 
 Replace `ADDRESS` with the actual address you want to check.
 
@@ -66,7 +80,7 @@ Replace `ADDRESS` with the actual address you want to check.
 curl -X GET http://localhost:3030/balance/ADDRESS
 ```
 
-### 3. Add a Transaction
+### 4. Add a Transaction
 
 Replace `SENDER_ADDRESS`, `RECIPIENT_ADDRESS`, and `AMOUNT` with the relevant values.
 
@@ -76,9 +90,9 @@ curl -X POST http://localhost:3030/transaction \
     -d '{"id": "TX_ID", "sender": "SENDER_ADDRESS", "recipient": "RECIPIENT_ADDRESS", "amount": AMOUNT}'
 ```
 
-### 4. Transfer Tokens
+### 5. Transfer Tokens
 
-Replace `FROM_ADDRESS`, `TO_ADDRESS`, and `AMOUNT` with the relevant values.
+Replace `FROM_ADDRESS`, `TO_ADDRESS`, and `AMOUNT` with the relevant values. Ensure `FROM_ADDRESS` has sufficient tokens (including the fee) by following the previous airdrop step.
 
 ```sh
 curl -X POST http://localhost:3030/transfer \
@@ -86,7 +100,7 @@ curl -X POST http://localhost:3030/transfer \
     -d '{"from": "FROM_ADDRESS", "to": "TO_ADDRESS", "amount": AMOUNT}'
 ```
 
-### 5. Get Transaction Details by ID
+### 6. Get Transaction Details by ID
 
 Replace `TRANSACTION_ID` with the ID of the transaction you want to retrieve.
 
@@ -113,7 +127,5 @@ For any questions, feel free to reach out to [Mohsin Siddi](https://github.com/M
 
 ```
 
-Make sure to replace placeholders like `ADDRESS`, `SENDER_ADDRESS`, `RECIPIENT_ADDRESS`, `AMOUNT`, `TX_ID`, and `TRANSACTION_ID` with actual values when testing.
-
-This README provides clear instructions and `curl` commands that users can easily copy and paste to interact with your blockchain service.
+This updated README now includes the new feature for airdropping tokens and stresses the importance of performing the airdrop before testing token transfers.
 ```
