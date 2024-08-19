@@ -39,8 +39,7 @@ Before running the blockchain, ensure you have Rust and Cargo installed. You can
    ```sh
    git clone https://github.com/Mohsinsiddi/Mohsin-blockchain-rust.git
    cd Mohsin-blockchain-rust
-   ```<img width="1512" alt="Screenshot 2024-08-19 at 2 39 04 PM" src="https://github.com/user-attachments/assets/8fae8a52-9dd4-4cd9-a4fc-7efeb1860063">
-
+   ```
 
 2. **Build and Run the Blockchain**:
 
