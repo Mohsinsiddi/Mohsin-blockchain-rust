@@ -1,5 +1,3 @@
-Certainly! Here’s the updated README content incorporating the new `airdrop_tokens` feature and emphasizing the need to airdrop tokens to new addresses before testing the transfer functionality:
-
 ````markdown
 # Mohsin Blockchain
 
