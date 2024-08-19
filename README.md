@@ -39,7 +39,8 @@ Before running the blockchain, ensure you have Rust and Cargo installed. You can
    ```sh
    git clone https://github.com/Mohsinsiddi/Mohsin-blockchain-rust.git
    cd Mohsin-blockchain-rust
-   ```
+   ```<img width="1512" alt="Screenshot 2024-08-19 at 2 39 04 PM" src="https://github.com/user-attachments/assets/8fae8a52-9dd4-4cd9-a4fc-7efeb1860063">
+
 
 2. **Build and Run the Blockchain**:
 
@@ -50,6 +51,8 @@ Before running the blockchain, ensure you have Rust and Cargo installed. You can
 
    This will start the blockchain server on port 3030.
 
+<img width="1512" alt="Screenshot 2024-08-19 at 2 39 04 PM" src="https://github.com/user-attachments/assets/2fadbfce-45cb-49ee-942d-d277d770249b">
+   
 ## Testing the Blockchain
 
 You can use `curl` to interact with the blockchain. Below are the commands to test various features.
@@ -71,6 +74,7 @@ curl -X POST http://localhost:3030/airdrop_tokens \
     -H "Content-Type: application/json" \
     -d '{"address": "ADDRESS", "amount": 1000}'
 ```
+<img width="1019" alt="Screenshot 2024-08-19 at 2 47 36 PM" src="https://github.com/user-attachments/assets/2c24b8c0-6e71-47c0-986e-347250cb5072">
 
 ### 3. Check Balance of an Address
 
@@ -79,6 +83,7 @@ Replace `ADDRESS` with the actual address you want to check.
 ```sh
 curl -X GET http://localhost:3030/balance/ADDRESS
 ```
+<img width="1019" alt="Screenshot 2024-08-19 at 2 40 01 PM" src="https://github.com/user-attachments/assets/b894069e-e20a-4a68-8f9e-c62784916d89">
 
 ### 4. Add a Transaction
 
@@ -99,6 +104,7 @@ curl -X POST http://localhost:3030/transfer \
     -H "Content-Type: application/json" \
     -d '{"from": "FROM_ADDRESS", "to": "TO_ADDRESS", "amount": AMOUNT}'
 ```
+<img width="1001" alt="Screenshot 2024-08-19 at 2 39 35 PM" src="https://github.com/user-attachments/assets/772bd441-f291-4ed0-ba8a-004529aad191">
 
 ### 6. Get Transaction Details by ID
 
